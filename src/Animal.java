@@ -27,5 +27,6 @@ public class Animal {
     public void setEnclosureType(String enclosureType) {
         this.EnclosureType = enclosureType;
     }
+    
 
 }

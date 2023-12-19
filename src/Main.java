@@ -171,14 +171,35 @@ public class Main {
                 myZoo.generateReport();
             }
             else if (choice == 9) {
-                // Change Animal's EnclosureType
-                System.out.println("Enter animal ID:");
-                int animalId = Integer.parseInt(keyboard.nextLine());
+                // Change Animal Enclosure
+                System.out.println("Enter the ID of the animal whose enclosure you want to change:");
+                int changeEnclosureId = Integer.parseInt(keyboard.nextLine());
             
-                System.out.println("Enter new EnclosureType:");
-                String newEnclosureType = keyboard.nextLine();
+                System.out.println("Enter the target enclosure type:");
+                String targetEnclosureType = keyboard.nextLine();
             
-                mammalEnclosure.changeAnimalEnclosureType(animalId, newEnclosureType);
+                boolean changed = false;
+                for (Enclosure enclosure : myZoo.enclosures) {
+                    for (Animal animal : enclosure.animals) {
+                        if (animal.id == changeEnclosureId) {
+                            if (myZoo.enclosures.stream().anyMatch(e -> e.getEnclosureType().equalsIgnoreCase(targetEnclosureType))) {
+                                animal.setEnclosureType(targetEnclosureType);
+                                System.out.println("Enclosure changed successfully!\n");
+                                System.out.println("---------------------------------\n");
+                                changed = true;
+                            } else {
+                                System.out.println("Target enclosure type not found!\n");
+                                System.out.println("---------------------------------\n");
+                            }
+                            break;
+                        }
+                    }
+                }
+            
+                if (!changed) {
+                    System.out.println("Animal with ID " + changeEnclosureId + " not found.\n");
+                    System.out.println("---------------------------------\n");
+                }
             }
             
 
