@@ -5,7 +5,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Zoo myZoo = new Zoo();
-        Enclosure mammalEnclosure = new Enclosure(10);
+        Enclosure mammalEnclosure = new Enclosure(10 , "Mammal");
         myZoo.addEnclosure(mammalEnclosure);
 
         Scanner keyboard = new Scanner(System.in);
@@ -158,8 +158,13 @@ public class Main {
                 // List Staff
                 myZoo.listStaff();
             } else if (choice == 7) {
-                // Add Enclosure
-                // ... (待添加)
+                System.out.println("Enter enclosure capacity:");
+                int enclosureCapacity = Integer.parseInt(keyboard.nextLine());
+
+                System.out.println("Enter enclosure type:");
+                String enclosureType = keyboard.nextLine();
+
+                myZoo.addEnclosure(enclosureCapacity, enclosureType);
             } else if (choice == 8) {
                 // Generate Report
                 myZoo.generateReport();
