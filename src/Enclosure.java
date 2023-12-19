@@ -6,6 +6,8 @@ public class Enclosure {
     ArrayList<Animal> animals = new ArrayList<>(); //一個陣列存放動物的屬性
     String enclosureType;
 
+    
+
     public Enclosure(int capacity, String enclosureType) {
         this.capacity = capacity;
         this.enclosureType = enclosureType;
@@ -39,6 +41,7 @@ public class Enclosure {
             animal.displayInfo();
         }
     }
+
 
 
     public boolean removeAnimalById(int removeId) {

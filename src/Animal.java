@@ -19,4 +19,14 @@ public class Animal {
         System.out.println("id: " + id + " , EnclosureType: " + EnclosureType + " , Animal: " + name + " , Age: " + age + " , Health: " +
                 healthStatus + " , Hunger : " + hunger );
     }
+
+    public String getEnclosureType() {
+        return EnclosureType;
+    }
+
+    public void setEnclosureType(String enclosureType) {
+        this.EnclosureType = enclosureType;
+    }
+    
+
 }

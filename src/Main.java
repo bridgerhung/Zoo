@@ -46,7 +46,8 @@ public class Main {
         while (true) {
             System.out.println("\nWelcome to the Zoo Management System");
             System.out.println("\nWhat function would you like to use?");
-            System.out.print("'add animal' Please input 1\n 'remove animal' Please input 2\n 'list animal' Please input 3\n 'feed animal' Please input 4\n 'add staff' Please input 5\n 'list staff' Please input 6\n 'add enclosure' Please input 7\n 'generate report' Please input 8\n 'Exit' Please input 0\n");
+            System.out.print("'add animal' Please input 1\n 'remove animal' Please input 2\n 'list animal' Please input 3\n 'feed animal' Please input 4\n 'add staff' Please input 5\n 'list staff' Please input 6\n 'add enclosure' Please input 7\n 'generate report' Please input 8\n 'Move Animal to Another Enclosure' Please input 9\n" + //
+                    " 'Exit' Please input 0\n ");
 
             int choice = Integer.parseInt(keyboard.nextLine());
 
@@ -169,6 +170,38 @@ public class Main {
                 // Generate Report
                 myZoo.generateReport();
             }
+            else if (choice == 9) {
+                // Change Animal Enclosure
+                System.out.println("Enter the ID of the animal whose enclosure you want to change:");
+                int changeEnclosureId = Integer.parseInt(keyboard.nextLine());
+            
+                System.out.println("Enter the target enclosure type:");
+                String targetEnclosureType = keyboard.nextLine();
+            
+                boolean changed = false;
+                for (Enclosure enclosure : myZoo.enclosures) {
+                    for (Animal animal : enclosure.animals) {
+                        if (animal.id == changeEnclosureId) {
+                            if (myZoo.enclosures.stream().anyMatch(e -> e.getEnclosureType().equalsIgnoreCase(targetEnclosureType))) {
+                                animal.setEnclosureType(targetEnclosureType);
+                                System.out.println("Enclosure changed successfully!\n");
+                                System.out.println("---------------------------------\n");
+                                changed = true;
+                            } else {
+                                System.out.println("Target enclosure type not found!\n");
+                                System.out.println("---------------------------------\n");
+                            }
+                            break;
+                        }
+                    }
+                }
+            
+                if (!changed) {
+                    System.out.println("Animal with ID " + changeEnclosureId + " not found.\n");
+                    System.out.println("---------------------------------\n");
+                }
+            }
+            
 
 
             // Create Staff
