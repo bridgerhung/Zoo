@@ -4,9 +4,11 @@ import java.util.ArrayList;
 public class Enclosure {
     int capacity; //動物園容量
     ArrayList<Animal> animals = new ArrayList<>(); //一個陣列存放動物的屬性
+    String enclosureType;
 
-    public Enclosure(int capacity) {
+    public Enclosure(int capacity, String enclosureType) {
         this.capacity = capacity;
+        this.enclosureType = enclosureType;
     }
 
     public boolean isFull() {
@@ -48,6 +50,16 @@ public class Enclosure {
         }
         return false;
     }
+
+    public void setEnclosureType(String enclosureType) {
+        this.enclosureType = enclosureType;
+    }
+
+    // 新增取得 EnclosureType 的方法
+    public String getEnclosureType() {
+        return enclosureType;
+    }
+
     public boolean feedAnimalById(int feedId) {
         for (Animal animal : animals) {
             if (animal.id == feedId) {
