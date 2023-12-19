@@ -6,6 +6,8 @@ public class Enclosure {
     ArrayList<Animal> animals = new ArrayList<>(); //一個陣列存放動物的屬性
     String enclosureType;
 
+    
+
     public Enclosure(int capacity, String enclosureType) {
         this.capacity = capacity;
         this.enclosureType = enclosureType;
@@ -40,6 +42,16 @@ public class Enclosure {
         }
     }
 
+    public void changeAnimalEnclosureType(int animalId, String newEnclosureType) {
+        for (Animal animal : animals) {
+            if (animal.id == animalId) {
+                animal.setEnclosureType(newEnclosureType);
+                System.out.println("Change animal's EnclosureType successfully!");
+                return;
+            }
+        }
+        System.out.println("Animal with ID " + animalId + " not found.");
+    }
 
     public boolean removeAnimalById(int removeId) {
         for (Animal animal : animals) {
